@@ -1,4 +1,3 @@
-```markdown
 # ProteinLens
 
 AI-assisted protein intelligence platform for drug discovery research.
