@@ -28,8 +28,6 @@ The application uses:
 
 ### Protein Data Retrieval
 
-Retrieves protein-level information:
-
 - Protein function and description
 - Gene and protein identifiers
 - Functional annotations
@@ -37,98 +35,78 @@ Retrieves protein-level information:
 - Available 3D structures
 
 Source:
-- UniProt REST API
+UniProt REST API
 
 ---
 
 ### Drug Discovery Information
-
-Provides target-related drug information:
 
 - Approved drugs
 - Clinical compounds
 - Compound-target relationships
 
 Source:
-- ChEMBL API
+ChEMBL API
 
 ---
 
 ### Disease Association Analysis
-
-Retrieves disease relevance information:
 
 - Target-disease associations
 - Disease scores
 - Target prioritization context
 
 Source:
-- OpenTargets Platform API
+OpenTargets Platform API
 
 ---
 
 ### Literature Mining
-
-Fetches recent protein-associated publications:
 
 - PubMed abstracts
 - Research trends
 - Drug discovery relevant studies
 
 Source:
-- NCBI PubMed E-utilities
-
----
-
-### AI-Based Scientific Analysis
-
-Uses Gemini to generate structured analysis from retrieved biological information.
-
-The AI system is designed to:
-
-- Use retrieved evidence as the primary context
-- Avoid unsupported claims
-- Highlight missing information where data is unavailable
+NCBI PubMed E-utilities
 
 ---
 
 ## Architecture
 
 ```
-
 User Input
 (Gene / Protein Name)
-|
-v
-+--------------------------------+
-|       Data Retrieval Layer     |
-|                                |
-|  UniProt                      |
-|  ChEMBL                       |
-|  OpenTargets                  |
-|  PubMed                       |
-+--------------------------------+
-|
-v
-+--------------------------------+
-|        AI Analysis Layer       |
-|                                |
-|  Gemini 2.5 Flash              |
-|  Evidence-grounded reasoning   |
-+--------------------------------+
-|
-v
-+--------------------------------+
-|        Streamlit UI             |
-|                                |
-|  Protein Information           |
-|  Drug Data                     |
-|  Literature                    |
-|  AI Analysis                   |
-|  3D Structure Viewer            |
-+--------------------------------+
-
-````
+        |
+        v
++-----------------------------+
+|     Data Retrieval Layer    |
+|                             |
+| UniProt                     |
+| ChEMBL                      |
+| OpenTargets                 |
+| PubMed                      |
++-----------------------------+
+        |
+        v
++-----------------------------+
+|       AI Analysis Layer     |
+|                             |
+| Gemini 2.5 Flash            |
+| Evidence-grounded reasoning |
++-----------------------------+
+        |
+        v
++-----------------------------+
+|        Streamlit UI         |
+|                             |
+| Protein Information         |
+| Drug Data                   |
+| Literature                  |
+| AI Analysis                 |
+| 3D Structure Viewer         |
++-----------------------------+
+```
 
 ---
 
@@ -136,25 +114,25 @@ v
 
 | Component | Technology |
 |---|---|
-| Programming Language | Python |
+| Language | Python |
 | Interface | Streamlit |
 | AI Model | Gemini 2.5 Flash |
-| Protein Database | UniProt REST API |
-| Drug Database | ChEMBL API |
-| Disease Database | OpenTargets API |
-| Literature Database | PubMed E-utilities |
+| Protein Data | UniProt REST API |
+| Drug Data | ChEMBL API |
+| Disease Data | OpenTargets API |
+| Literature | PubMed |
 | Structure Viewer | RCSB PDB Mol* |
 
 ---
 
 ## Installation
 
-Clone the repository:
+Clone repository:
 
 ```bash
 git clone https://github.com/bhadrasiva/proteinlens.git
 cd proteinlens
-````
+```
 
 Install dependencies:
 
@@ -162,22 +140,10 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Create environment file:
+Run application:
 
 ```bash
-cp .env.example .env
-```
-
-Add your Gemini API key:
-
-```bash
-GEMINI_API_KEY=your_api_key
-```
-
-Run the application:
-
-```bash
-streamlit run app.py
+streamlit run App.py
 ```
 
 ---
@@ -186,62 +152,56 @@ streamlit run app.py
 
 Only Gemini requires an API key.
 
-Get your API key:
+Get API key:
 
-[https://aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+https://aistudio.google.com/apikey
 
-The following resources are freely accessible:
+Free APIs:
 
-* UniProt
-* ChEMBL
-* OpenTargets
-* PubMed
+- UniProt
+- ChEMBL
+- OpenTargets
+- PubMed
 
 ---
 
 ## Example Targets
 
-| Gene  | Research Area                           |
-| ----- | --------------------------------------- |
-| BRCA1 | Cancer biology                          |
-| TP53  | Tumor suppression                       |
-| EGFR  | Oncology                                |
-| KRAS  | Cancer therapeutics                     |
-| HER2  | Breast cancer                           |
-| ACE2  | Viral entry and cardiovascular research |
-| PTEN  | Cancer signaling                        |
+| Gene | Research Area |
+|---|---|
+| BRCA1 | Cancer biology |
+| TP53 | Tumor suppression |
+| EGFR | Oncology |
+| KRAS | Cancer therapeutics |
+| HER2 | Breast cancer |
+| ACE2 | Viral entry |
+| PTEN | Cancer signaling |
 
 ---
 
 ## Grounding Workflow
 
-ProteinLens follows a retrieval-augmented generation workflow:
-
-1. User enters a gene or protein name
-2. Biological information is retrieved from external databases
+1. User enters gene/protein name
+2. Data is retrieved from biological databases
 3. Relevant context is prepared
-4. Gemini receives retrieved information
-5. AI generates analysis based on available evidence
-
-This approach connects AI-generated insights with biological data sources instead of relying only on model memory.
+4. Gemini analyzes only retrieved information
+5. Output is generated based on available evidence
 
 ---
 
 ## Project Objectives
 
-ProteinLens was developed as a personal project exploring:
+Explores:
 
-* Bioinformatics API integration
-* Biomedical knowledge retrieval
-* AI-assisted scientific interpretation
-* Drug discovery workflows
-* Protein target analysis
+- Bioinformatics API integration
+- Biomedical data retrieval
+- AI-assisted scientific analysis
+- Drug discovery workflows
+- Protein target evaluation
 
 ---
 
 ## License
 
 MIT License
-
-```
 ```
